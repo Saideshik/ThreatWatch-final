@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-base:        #070b0f;
+  --bg-panel:       #0c1118;
+  --bg-card:        #101820;
+  --bg-card-hover:  #141f2a;
+  --border:         #1c2a38;
+  --border-bright:  #243040;
+
+  --text-primary:   #dde8f0;
+  --text-secondary: #7a9ab0;
+  --text-muted:     #3d5060;
+  --text-mono:      #6ec6e8;
+
+  --critical:        #ff3a3a;
+  --critical-bg:     rgba(255,58,58,0.08);
+  --critical-border: rgba(255,58,58,0.3);
+
+  --high:        #ff8c00;
+  --high-bg:     rgba(255,140,0,0.08);
+  --high-border: rgba(255,140,0,0.3);
+
+  --medium:        #f5c400;
+  --medium-bg:     rgba(245,196,0,0.08);
+  --medium-border: rgba(245,196,0,0.25);
+
+  --low:        #1fc8e3;
+  --low-bg:     rgba(31,200,227,0.08);
+  --low-border: rgba(31,200,227,0.25);
+
+  --accent:     #38bdf8;
+  --accent-dim: rgba(56,189,248,0.12);
+  --green:      #3ddc84;
+  --green-dim:  rgba(61,220,132,0.1);
+  --purple:     #a78bfa;
+
+  --font-display: 'Rajdhani', sans-serif;
+  --font-body:    'Exo 2', sans-serif;
+  --font-mono:    'Share Tech Mono', monospace;
+}
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { display: flex; flex-direction: column; height: 100vh; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+@keyframes spin   { to{transform:rotate(360deg)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes slideIn { from{opacity:0;transform:translateX(16px)} to{opacity:1;transform:translateX(0)} }
+@keyframes pulse-red { 0%,100%{box-shadow:0 0 0 0 rgba(255,58,58,.4)} 50%{box-shadow:0 0 0 8px rgba(255,58,58,0)} }
+
+.anim-fade-up  { animation: fadeUp  .35s ease both; }
+.anim-slide-in { animation: slideIn .25s ease both; }
+.blink { animation: blink 1.4s infinite; }
+.spin  { animation: spin  1s linear infinite; display:inline-flex; }
+
+button { font-family: var(--font-body); }
