@@ -9,7 +9,7 @@ import {
 // ════════════════════════════════════════════════════════════════════════════
 // CHANGE THIS to your Railway URL after deploying backend
 // ════════════════════════════════════════════════════════════════════════════
-const API = 'https://threatwatch-production.up.railway.app'
+const API = 'https://threatwatch-final-production-a3c6.up.railway.app'
 
 // ─── Priority config ──────────────────────────────────────────────────────────
 const P = {
