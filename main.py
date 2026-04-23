@@ -23,7 +23,10 @@ from openai import OpenAI
 ALERTS_FILE    = os.getenv("ALERTS_FILE", "/var/ossec/logs/alerts/alerts.json")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
-openai_client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
+try:
+    openai_client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
+except Exception:
+    openai_client = None
 
 app = FastAPI(title="ThreatWatch API", version="2.0")
 app.add_middleware(
