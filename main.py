@@ -335,7 +335,8 @@ def build_alert_object(raw: dict) -> Optional[dict]:
     agent_name  = raw.get("agent", {}).get("name", "unknown")
     timestamp   = raw.get("timestamp", datetime.utcnow().isoformat() + "Z")
 
-    if "cis" in description.lower():
+    noise_keywords = ["cis", "logon success", "software protection", "service scheduled", "session opened"]
+    if any(kw in description.lower() for kw in noise_keywords):
         return None
 
     score       = calculate_score(raw)
