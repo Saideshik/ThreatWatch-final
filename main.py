@@ -335,7 +335,86 @@ def build_alert_object(raw: dict) -> Optional[dict]:
     agent_name  = raw.get("agent", {}).get("name", "unknown")
     timestamp   = raw.get("timestamp", datetime.utcnow().isoformat() + "Z")
 
-    noise_keywords = ["cis", "logon success", "software protection", "service scheduled", "session opened"]
+    noise_keywords = [
+    # System/OS noise
+    "cis",
+    "logon success",
+    "software protection",
+    "service scheduled",
+    "session opened",
+    "session closed",
+    "license activation",
+    "slui.exe",
+    "log file rotated",
+    "pam: login",
+    "pam: session",
+    "host-based anomaly detection event",
+    "rootcheck",
+    "file added to the system",
+    "integrity checksum changed",
+    "listened ports status",
+    "netstat",
+    "new dpkg",
+    "dpkg",
+    "package installed",
+    "package half configured",
+    "wazuh server started",
+    "sca summary",
+    "successful sudo to root",
+    "user authentication",
+    "ossec server started",
+    "agent started",
+    "agent disconnected",
+
+    # Wazuh internal
+    "wazuh agent",
+    "wazuh-agent",
+    "agent connected",
+    "wazuh manager",
+    "ossec",
+    "syscheck",
+    "fim",
+
+    # Linux noise
+    "systemd",
+    "cron",
+    "ntp",
+    "dhcp",
+    "snap",
+    "apt",
+    "yum",
+    "package upgraded",
+    "package removed",
+
+    # Windows noise
+    "windows update",
+    "user account",
+    "audit policy",
+    "process exited",
+    "service started",
+    "service stopped",
+    "scheduled task",
+    "group policy",
+    "logoff",
+    "kerberos",
+    "ntlm",
+    "screensaver",
+    "lock workstation",
+    "unlock workstation",
+
+    # Browser/app noise
+    "firefox",
+    "chrome",
+    "edge",
+    "browser",
+
+    # File system noise
+    "file removed from",
+    "file modified",
+    "directory added",
+    "directory removed",
+    ]
+
     if any(kw in description.lower() for kw in noise_keywords):
         return None
 
